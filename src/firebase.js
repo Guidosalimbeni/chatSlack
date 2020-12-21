@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
 
-var firebaseConfig = {
+var firebase_Config = {
     apiKey: "AIzaSyDPgne3lP5y84ktbNIH0F_FFex6lQa8QQo",
     authDomain: "chatbotidrive.firebaseapp.com",
     projectId: "chatbotidrive",
@@ -13,7 +13,7 @@ var firebaseConfig = {
     measurementId: "G-JPGT6X5HN8"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebase_Config);
   firebase.analytics();
 
 export default firebase;
