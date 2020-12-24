@@ -3,17 +3,17 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
 
-var firebase_Config = {
-    apiKey: "AIzaSyDPgne3lP5y84ktbNIH0F_FFex6lQa8QQo",
-    authDomain: "chatbotidrive.firebaseapp.com",
-    projectId: "chatbotidrive",
-    storageBucket: "chatbotidrive.appspot.com",
-    messagingSenderId: "267670642090",
-    appId: "1:267670642090:web:1c63971ca12b6fca7f9fd3",
-    measurementId: "G-JPGT6X5HN8"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebase_Config);
+var firebaseConfig = {
+  apiKey: "AIzaSyDcuV28QyRd_DvQWBlkkC9bUN_X-n_ua-A",
+  authDomain: "chat-ff78a.firebaseapp.com",
+  databaseURL: "https://chat-ff78a-default-rtdb.firebaseio.com",
+  projectId: "chat-ff78a",
+  storageBucket: "chat-ff78a.appspot.com",
+  messagingSenderId: "620475394916",
+  appId: "1:620475394916:web:940d36d99e5e9da5b32871"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
   
 
 export default firebase;
