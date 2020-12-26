@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "../../firebase";
 import { Grid, Header, Icon, Dropdown } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 class UserPanel extends React.Component {
   dropdownOptions = () => [
@@ -19,7 +20,7 @@ class UserPanel extends React.Component {
     },
     {
       key: "signout",
-      text: <span onClick ={this.handleSignout}> Sign Out</span>
+      text: <span onClick={this.handleSignout}> Sign Out</span>
     }
   ];
 
@@ -29,6 +30,9 @@ class UserPanel extends React.Component {
   }
 
   render() {
+
+    console.log(this.props.currentUser);
+
     return (
       <Grid style={{ background: "#4c3c4c" }}>
         <Grid.Column>
@@ -53,4 +57,10 @@ class UserPanel extends React.Component {
   }
 }
 
-export default UserPanel;
+const mapStateToProps = ({user}) => ({
+  currentUser: user.currentUser,
+}
+
+);
+
+export default connect(mapStateToProps)(UserPanel);
