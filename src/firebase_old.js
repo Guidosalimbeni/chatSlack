@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
 
-var config = {
+var firebaseConfig = {
   apiKey: "AIzaSyDcuV28QyRd_DvQWBlkkC9bUN_X-n_ua-A",
   authDomain: "chat-ff78a.firebaseapp.com",
   databaseURL: "https://chat-ff78a-default-rtdb.firebaseio.com",
@@ -12,6 +12,8 @@ var config = {
   messagingSenderId: "620475394916",
   appId: "1:620475394916:web:940d36d99e5e9da5b32871"
 };
-firebase.initializeApp(config);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+  
 
 export default firebase;
