@@ -7,6 +7,7 @@ import TestComponent from "./components/testing_component/TestComponent";
 import Spinner from "./Spinner";
 import registerServiceWorker from "./registerServiceWorker";
 import firebase from "./firebase";
+import configureStore from "./hooks-store/predictions-store";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -24,6 +25,8 @@ import rootReducer from "./reducers";
 import { setUser, clearUser } from "./actions";
 
 const store = createStore(rootReducer, composeWithDevTools());
+
+configureStore();
 
 class Root extends React.Component {
   componentDidMount() {

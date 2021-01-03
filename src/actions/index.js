@@ -56,11 +56,11 @@ export const setColors = (primaryColor, secondaryColor) => {
 };
 
 
-export const setSentiment = sentiment => {
+export const setSentiment = predictions => {
   return {
-    type: actionTypes.SET_USER,
+    type: actionTypes.SET_CURRENT_SENTIMENT,
     payload: {
-      currentSentiment: sentiment
+      currentSentiment: predictions
     }
   };
 };

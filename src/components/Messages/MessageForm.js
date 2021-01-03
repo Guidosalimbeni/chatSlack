@@ -11,8 +11,12 @@ import { setSentiment } from "../../actions";
 import FileModal from "./FileModal";
 import ProgressBar from "./ProgressBar";
 import axios from "axios";
+import {useStore} from "../../hooks-store/store";
 
 class MessageForm extends React.Component {
+
+  
+
   state = {
     storageRef: firebase.storage().ref(),
     typingRef: firebase.database().ref("typing"),
@@ -103,21 +107,35 @@ class MessageForm extends React.Component {
   submitRequest = async () => {
     //ev.preventDefault()
 
+    
+
     const data = { "text": "Meetings: Because none of us is as dumb as all of us." }
     const headers = { "Content-type": "application/json", "Accept": "text/plain" }
-    const response = await axios.post("http://c965fad81705.ngrok.io" + "/predict", data, {
+    const response = await axios.post("http://22c4ec4a14a4.ngrok.io" + "/predict", data, {
       headers: headers
     });
 
-    console.log(response.data.predictions);
+    if (response){
 
-    this.setState({predictions: response.data.predictions})
-    this.props.setSentiment(response.data.predictions);
+      console.log(response.data.predictions);
 
+      this.setState({predictions: response.data.predictions})
+
+      // const dispatch = useStore()[1];
+
+      // dispatch("SET_SENT", response.data.predictions)
+      
+    }
+
+    // https://www.npmjs.com/package/use-global-hook
+
+    // const stateStore = useStore()[0];
+    // console.log(stateStore.curruntSentiment);
+    
   }
 
   sendMessage = () => {
-    const { getMessagesRef } = this.props;
+    const { getMessagesRef} = this.props;
     const { message, channel, user, typingRef } = this.state;
 
     if (message) {
@@ -142,6 +160,7 @@ class MessageForm extends React.Component {
         });
 
       this.submitRequest();
+      
 
     } else {
       this.setState({
@@ -296,7 +315,12 @@ class MessageForm extends React.Component {
 
 //export default MessageForm;
 
-export default connect(
-  null,
-  { setSentiment }
-)(MessageForm);
+const mapStateToProps = state => { 
+  return {
+    sent : state.sentiment
+  }
+}
+
+
+
+export default connect(mapStateToProps, setSentiment)(MessageForm);
