@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import TestComponent from "./components/testing_component/TestComponent";
 import Spinner from "./Spinner";
 import registerServiceWorker from "./registerServiceWorker";
 import firebase from "./firebase";
@@ -46,6 +47,7 @@ class Root extends React.Component {
         <Route exact path="/" component={App} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/test" component={TestComponent} />
       </Switch>
     );
   }

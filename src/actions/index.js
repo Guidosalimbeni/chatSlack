@@ -54,3 +54,13 @@ export const setColors = (primaryColor, secondaryColor) => {
     }
   };
 };
+
+
+export const setSentiment = sentiment => {
+  return {
+    type: actionTypes.SET_USER,
+    payload: {
+      currentSentiment: sentiment
+    }
+  };
+};

@@ -4,9 +4,13 @@ import firebase from "../../firebase";
 import { Segment, Button, Input } from "semantic-ui-react";
 import { Picker, emojiIndex } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
+import { connect } from "react-redux";
+import { setSentiment } from "../../actions";
+
 
 import FileModal from "./FileModal";
 import ProgressBar from "./ProgressBar";
+import axios from "axios";
 
 class MessageForm extends React.Component {
   state = {
@@ -21,7 +25,8 @@ class MessageForm extends React.Component {
     loading: false,
     errors: [],
     modal: false,
-    emojiPicker: false
+    emojiPicker: false,
+    predictions: ""
   };
 
   openModal = () => this.setState({ modal: true });
@@ -95,6 +100,22 @@ class MessageForm extends React.Component {
     return message;
   };
 
+  submitRequest = async () => {
+    //ev.preventDefault()
+
+    const data = { "text": "Meetings: Because none of us is as dumb as all of us." }
+    const headers = { "Content-type": "application/json", "Accept": "text/plain" }
+    const response = await axios.post("http://c965fad81705.ngrok.io" + "/predict", data, {
+      headers: headers
+    });
+
+    console.log(response.data.predictions);
+
+    this.setState({predictions: response.data.predictions})
+    this.props.setSentiment(response.data.predictions);
+
+  }
+
   sendMessage = () => {
     const { getMessagesRef } = this.props;
     const { message, channel, user, typingRef } = this.state;
@@ -119,12 +140,18 @@ class MessageForm extends React.Component {
             errors: this.state.errors.concat(err)
           });
         });
+
+      this.submitRequest();
+
     } else {
       this.setState({
         errors: this.state.errors.concat({ message: "Add a message" })
       });
     }
   };
+
+  
+
 
   getPath = () => {
     if (this.props.isPrivateChannel) {
@@ -267,4 +294,9 @@ class MessageForm extends React.Component {
   }
 }
 
-export default MessageForm;
+//export default MessageForm;
+
+export default connect(
+  null,
+  { setSentiment }
+)(MessageForm);

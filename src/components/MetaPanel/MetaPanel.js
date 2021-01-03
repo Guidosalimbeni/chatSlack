@@ -91,6 +91,28 @@ class MetaPanel extends React.Component {
               {channel && channel.createdBy.name}
             </Header>
           </Accordion.Content>
+
+          <Accordion.Title
+            active={activeIndex === 3}
+            index={3}
+            onClick={this.setActiveIndex}
+          >
+            <Icon name='dropdown' />
+          Sentiment of the conversation:
+        </Accordion.Title>
+          <Accordion.Content active={activeIndex === 3}>
+            <p>
+              Three common ways for a prospective owner to acquire a dog is from
+              pet shops, private owners, or shelters.
+          </p>
+            <p>
+              A pet shop may be the most convenient way to buy a dog. Buying a dog
+              from a private owner allows you to assess the pedigree and
+              upbringing of your dog before choosing to take it home. Lastly,
+              finding your dog from a shelter, helps give a good home to a dog who
+              may not find one so readily.
+          </p>
+          </Accordion.Content>
         </Accordion>
       </Segment>
     );

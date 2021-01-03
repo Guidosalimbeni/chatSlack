@@ -68,10 +68,30 @@ const colors_reducer = (state = initialColorsState, action) => {
   }
 };
 
+const initialSentiment = {
+  sentiment: ""
+}
+
+const sentiment_reducer = (state = initialSentiment, action) => {
+  switch (action.type) {
+    case actionTypes.SET_CURRENT_SENTIMENT:
+      return {
+        sentiment: action.payload.currentSentiment
+      };
+    default:
+      return state;
+  }
+};
+
+
 const rootReducer = combineReducers({
   user: user_reducer,
   channel: channel_reducer,
-  colors: colors_reducer
+  colors: colors_reducer,
+  sentiment: sentiment_reducer
 });
+
+
+
 
 export default rootReducer;
