@@ -13,9 +13,8 @@ import ProgressBar from "./ProgressBar";
 import axios from "axios";
 import {useStore} from "../../hooks-store/store";
 
-class MessageForm extends React.Component {
 
-  
+class MessageForm extends React.Component {
 
   state = {
     storageRef: firebase.storage().ref(),
@@ -107,6 +106,8 @@ class MessageForm extends React.Component {
   submitRequest = async () => {
     //ev.preventDefault()
 
+    //=> this.props.setColors(color.primary, color.secondary)
+
     
 
     const data = { "text": "Meetings: Because none of us is as dumb as all of us." }
@@ -118,6 +119,8 @@ class MessageForm extends React.Component {
     if (response){
 
       console.log(response.data.predictions);
+
+      setSentiment(response.data.predictions)
 
       this.setState({predictions: response.data.predictions})
 

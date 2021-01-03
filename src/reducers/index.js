@@ -76,7 +76,7 @@ const sentiment_reducer = (state = initialSentiment, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_SENTIMENT:
       return {
-        sentiment: action.payload.currentSentiment
+        sentiment: action.payload.predictions
       };
     default:
       return state;

@@ -24,6 +24,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
 import { setUser, clearUser } from "./actions";
 
+
 const store = createStore(rootReducer, composeWithDevTools());
 
 configureStore();

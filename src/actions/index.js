@@ -60,7 +60,7 @@ export const setSentiment = predictions => {
   return {
     type: actionTypes.SET_CURRENT_SENTIMENT,
     payload: {
-      currentSentiment: predictions
+      predictions
     }
   };
 };
