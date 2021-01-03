@@ -112,7 +112,7 @@ class MessageForm extends React.Component {
 
     const data = { "text": "Meetings: Because none of us is as dumb as all of us." }
     const headers = { "Content-type": "application/json", "Accept": "text/plain" }
-    const response = await axios.post("http://22c4ec4a14a4.ngrok.io" + "/predict", data, {
+    const response = await axios.post("http://1dace273a51d.ngrok.io" + "/predict", data, {
       headers: headers
     });
 
@@ -120,7 +120,7 @@ class MessageForm extends React.Component {
 
       console.log(response.data.predictions);
 
-      setSentiment(response.data.predictions)
+      this.props.setSentiment(response.data.predictions)
 
       this.setState({predictions: response.data.predictions})
 
@@ -326,4 +326,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps, setSentiment)(MessageForm);
+export default connect(mapStateToProps, {setSentiment})(MessageForm);
