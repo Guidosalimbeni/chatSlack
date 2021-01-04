@@ -103,24 +103,24 @@ class MessageForm extends React.Component {
     return message;
   };
 
-  submitRequest = async () => {
+  submitRequest = async (message) => {
     //ev.preventDefault()
 
     //=> this.props.setColors(color.primary, color.secondary)
-
+    //console.log(message)
     
 
-    const data = { "text": "Meetings: Because none of us is as dumb as all of us." }
+    const data = { "text": message }
     const headers = { "Content-type": "application/json", "Accept": "text/plain" }
-    const response = await axios.post("http://1dace273a51d.ngrok.io" + "/predict", data, {
+    const response = await axios.post("http://63fbb055d1aa.ngrok.io" + "/predict", data, {
       headers: headers
     });
 
     if (response){
 
-      console.log(response.data.predictions);
+      //console.log(response.data.predictions);
 
-      this.props.setSentiment(response.data.predictions)
+      this.props.setSentiment(response.data.predictions) // redux bit
 
       this.setState({predictions: response.data.predictions})
 
@@ -162,7 +162,7 @@ class MessageForm extends React.Component {
           });
         });
 
-      this.submitRequest();
+      this.submitRequest(message);
       
 
     } else {
@@ -316,7 +316,7 @@ class MessageForm extends React.Component {
   }
 }
 
-//export default MessageForm;
+//export default MessageForm; state below is the global state
 
 const mapStateToProps = state => { 
   return {

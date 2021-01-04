@@ -9,7 +9,7 @@ import Messages from "./Messages/Messages";
 import MetaPanel from "./MetaPanel/MetaPanel";
 
 // prettier-ignore
-const App = ({ currentUser, currentChannel, isPrivateChannel, userPosts, primaryColor, secondaryColor }) => (
+const App = ({ currentUser, currentChannel, isPrivateChannel, userPosts, primaryColor, secondaryColor, sentiment }) => (
   <Grid columns="equal" className="app" style={{ background: secondaryColor }}>
     <ColorPanel
       key={currentUser && currentUser.name}
@@ -36,6 +36,7 @@ const App = ({ currentUser, currentChannel, isPrivateChannel, userPosts, primary
         userPosts={userPosts}
         currentChannel={currentChannel}
         isPrivateChannel={isPrivateChannel}
+        sentiment = {sentiment}
       />
     </Grid.Column>
   </Grid>
@@ -47,7 +48,8 @@ const mapStateToProps = state => ({
   isPrivateChannel: state.channel.isPrivateChannel,
   userPosts: state.channel.userPosts,
   primaryColor: state.colors.primaryColor,
-  secondaryColor: state.colors.secondaryColor
+  secondaryColor: state.colors.secondaryColor,
+  sentiment: state.sentiment.sentiment
 });
 
 export default connect(mapStateToProps)(App);

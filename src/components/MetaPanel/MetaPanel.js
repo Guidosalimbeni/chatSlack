@@ -40,9 +40,11 @@ class MetaPanel extends React.Component {
 
   render() {
     const { activeIndex, privateChannel, channel } = this.state;
-    const { userPosts } = this.props;
+    const { userPosts, sentiment } = this.props;
 
     if (privateChannel) return null;
+    
+    //console.log(sentiment);
 
     return (
       <Segment loading={!channel}>
@@ -98,19 +100,12 @@ class MetaPanel extends React.Component {
             onClick={this.setActiveIndex}
           >
             <Icon name='dropdown' />
-          Sentiment of the conversation:
+          Sentiment: {sentiment}
         </Accordion.Title>
           <Accordion.Content active={activeIndex === 3}>
             <p>
-              Three common ways for a prospective owner to acquire a dog is from
-              pet shops, private owners, or shelters.
-          </p>
-            <p>
-              A pet shop may be the most convenient way to buy a dog. Buying a dog
-              from a private owner allows you to assess the pedigree and
-              upbringing of your dog before choosing to take it home. Lastly,
-              finding your dog from a shelter, helps give a good home to a dog who
-              may not find one so readily.
+              Sentiment analysis based on twitter data.
+              the server predictor run over google colab and ngrok
           </p>
           </Accordion.Content>
         </Accordion>
